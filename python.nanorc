@@ -2,10 +2,12 @@ syntax "python" "\.py$" "jhbuildrc$"
 header "^#!.*/(env +)?python[-0-9._]*( |$)"
 
 FUNCTION: "def [ 0-9A-Z_]+"
-KEYWORD:  "\<(as|assert|class|def|del|elif|else|except|exec|finally|for|from|global|if|import|lambda|map|pass|print|raise|try|while|with|yield|None)\>"
 +FUNCTION
+KEYWORD:  "\<(as|assert|class|def|del|elif|else|except|exec|finally|for|from|global|if|import|lambda|map|pass|print|raise|try|while|with|yield|None)\>"
 JUMP:     "\<(break|continue|return)\>"
 TYPE:     "\<(str|bytearray|bytes|list|tuple|set|frozenset|dict|int|float|complex|bool)\>"
+
+NUMBER:   "[0-9]"
 
 OPERATOR: "[-+*/%|&=~!<>^.:;,]|\<(and|not|or|is|in)\>"
 MACRO:    "@[A-Za-z0-9_]+"
