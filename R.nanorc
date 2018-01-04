@@ -1,0 +1,39 @@
+syntax "R" "\.R$"
+header "^#!.*/Rscript"
+
+OPERATOR: "[-+*/%|&=~!<>^.:;,]"
+FUNCTION: ".* <- function"
++FUNCTION
+
+## Assignment operators
+color red "(<){1,2}-"
+
+KEYWORD:  "(\<(else|for|if|in|next|repeat|while)\>|[.]{3,3}|[.]{2,2}[0-9]+)"
+JUMP:     "\<(break|return)\>"
+
+## Integers
+NUMBER:   "(\b|-)[0-9]+[iL]?\b"
+## Floating-point numbers
+NUMBER:   "(\b|-)([0-9]+[Ee][-+]?[0-9]+|([0-9]*\.[0-9]+|[0-9]+\.)([Ee][-+]?[0-9]+)?)[i]?\b"
+
+
+BOOLEAN:  "\<(TRUE|FALSE|NA)\>"
+## Other special constants
+BOOLEAN:  "\<(Inf|NA_character_|NA_complex_|NA_integer_|NA_real_|NaN|NULL)\>"
+
+DELIMITER: "[\)\(,;]+|[\{\}]+|[][]+"
+
+## Backtic-quoted names
+color red "`[^`]*`"
+
+## Unevaluated words (as occurring in '$' and '@' operators)
+VARIABLE:   "[@$][a-zA-Z.][a-zA-Z0-9._]*"
+
++STRING
+STRING:   ""([^"]|(\\"))*""
+STRING:   "'([^']|(\\'))*'"
+ESCAPE:   "\\.?"
+
++HASHCOMMENT
++TODO
++LINT
